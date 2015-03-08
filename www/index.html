@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/jsOAuth-1.3.6.min.js"></script> 
+    <meta name="msapplication-tap-highlight" content="no" />
+    <script src="http://maps.googleapis.com/maps/api/js?v=3.9&sensor=true_or_false"> </script> 
+    <title>EcoReto</title>
+</head>
+<body onload="onLoad()">
+    <!--PAGINA de registro -->
+
+ <div data-role="page" id="p2" class='fondo'>   
+  <div data-role="header" data-theme="b" >
+    <h1>EcoReto</h1>
+
+    <fieldset class="ui-grid-a">
+
+      <div class="ui-block-a" >
+        <button  id = "btn-twiter" type="submit" data-theme="c"class=" ui-btn ui-btn-a  btnA ui-shadow ui-corner-all" id="loginBtn" onclick="Twitter.init()" >Twitter </button>
+      </div>
+      <div class="ui-block-b">
+        <button  id="btn-fb" onclick="loginFacebook()" type="submit" data-theme="b"  class=" ui-btn btnA ui-btn-b ui-shadow ui-corner-all" >Facebook</button>
+      </div>
+    </fieldset>
+  </div>
+  <div id="pagRegistro"   data-role="content">   
+
+   <div class="ui-grid-b">
+    <div class="ui-block-a" id="block-a" ></div>
+    <div class="ui-block-b" id="block-img" ></div>
+    <div class="ui-block-c" id="block-twiter"></div>
+  </div>
+  <form id="registroUsuario" >
+    <label> Tarjeta ECOBICI : </label>
+    <input type="text" id="NumEcoUsuario" name="clave" placeholder="Ingresa  tu numero de ECOBICI">
+
+  </form>        
+
+</div>
+<div data-role="footer" data-position="fixed" data-theme="b">
+ <button onclick="enviaRegistro()" Style =  "margin-left: 10%;" type="submit" data-theme="a"  id="btn-a" class=" ui-btn ui-btn-b ui-shadow ui-corner-all" >Registar</button>
+</fieldset>
+</div>   
+</div>
+    <div data-role="page" id="inicio">
+        <div data-role="header" data-position="fixed" data-theme="b">
+            <h1>Bienvenido!</h1>
+        </div>
+        <div data-role="content" id="content-inicio">
+            <img src="img/cadena.png" alt="" id="cadena" >
+            <img src="img/fondo.png" alt="" id="fondo" >
+            <img src="img/edif.png" class="blink2" id="edif" >
+            
+
+        </div>
+    </div>
+    <div data-role="page" id="retos">
+        <div data-role="header" data-position="fixed" data-theme="b">
+            <h1>RETOS!</h1>
+        </div>
+        <div data-role="content" id="content-retos">
+            <div class="retos-existentes" id="retos-existentes">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div data-role="page" id="nuevo-reto">
+        <div data-role="header" data-position="fixed" data-theme="b">
+            <h1>Nuevo Reto!</h1>
+        </div>
+        <div data-role="content" id="content-reto">
+            <div class="container" id="desc-reto">
+                <div class="nombre">Cinepolis 20K</div>
+                <div class="descripcion">
+                    Recorre 20Km a partir de este momento hasta el 15 de Marzo y gana entradas dobles a Cinepolis ®
+                    Los primeros 10 participantes en recorrer los 10km ganaron 2 boletos.
+                </div>
+                <fieldset class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <button class="ui-btn ui-btn-b ui-btn-corner-all" id="aceptar">Aceptar Reto</button>
+                    </div>
+                    <div class="ui-block-b">
+                        <button class="ui-btn ui-btn-a ui-btn-corner-all" id="declinar">Declinar</button>
+                    </div>
+                </fieldset>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div data-role="page" id="perfil">
+        <div data-role="header" data-position="fixed" data-theme="b">
+            <h1>Perfil</h1>
+        </div>
+        <div data-role="content" id="content-profile">
+            <div class="block profile-data">
+                <img src="" alt="" id="img-profile" >
+                <div class="prf-name" >
+                    <h2 id="namee"></h2>
+                    <p class="blink" id="cpuntos"></p>
+                </div>
+
+            </div>
+            <div class="tittle">
+                <h1>Retos Activos</h1>
+            </div>
+            <div class="retos-activos" id="retos-usuario">
+
+            </div>
+
+            <div class="premios">
+
+            </div>
+        </div>
+    </div>
+
+    <div data-role="page" id="p1">
+    <div data-role="header" data-theme="b"  >
+     <h1>MAPA</h1>
+
+   </div>
+   <div data-role="content"  >      
+    
+      <div id="map-canvas" style="width: 100%; height: 80%; position: absolute;"> </div>
+   </div>
+   <div data-role="footer" data-position="fixed" data-theme="b">
+      <fieldset class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <button  onclick='aceptarRetoMapa()' class="ui-btn ui-btn-b btnA ui-btn-corner-all" id="aceptar-m">Aceptar Reto</button>
+                    </div>
+                    <div class="ui-block-b">
+                        <button class="ui-btn ui-btn-a btnA ui-btn-corner-all" id="declinar-m">Declinar</button>
+                    </div>
+             </fieldset>
+   </div>
+ </div>
+
+ 
+
+<div data-role="page" id="premio">
+    <div data-role="header" data-theme="b"  >
+     <h1>¡¡¡FELICIDADES!!!</h1>
+
+   </div>
+   <div data-role="content" >
+    <div class='fondo2'>
+      <span class="luz" id="blink"><b>RETO CUMPLIDO</b></span>
+      <div id='imgPush' ></div>
+      <p>Publica  tu logro</p>
+      </div>
+       <input id="tweet" type="text"  data-clear-btn="true" name:"post-text" value="He Cumplido un #EcoRetoCDMX @ecobici ">
+         <div id="msgPost" ></div>
+         
+
+   </div>
+   <div data-role="footer" data-position="fixed" data-theme="b">
+            <button onclick="Twitter.tweet()"  id = "btn-twiter2" type="submit" data-theme="b"  "btn-twiter" class=" ui-btn ui-btn-b ui-shadow ui-corner-all" >Tweet</button>
+   </div>
+ </div>
+
+ <div data-role="page" id="premio2">
+    <div data-role="header" data-theme="b"  >
+     <h1>Has Ganado!</h1>
+    
+   </div>
+   <div data-role="content" >
+    <div class='fondo2'>
+      <span class="luz" id="blink"><b>Rite de Acompañante</b></span>
+      <p>Dale una Aventon a un Amigo, ingresa los datos</p>
+
+      <input type="text">
+              <button  onclick='cobrarPremio()' class="ui-btn ui-btn-b btnA ui-btn-corner-all" >Cobrar</button>
+         
+
+   </div>
+   </div>
+   <div data-role="footer" data-position="fixed" data-theme="b">
+            <button onclick="Twitter.tweet()"  id = "btn-twiter2" type="submit" data-theme="b"  "btn-twiter" class=" ui-btn ui-btn-b ui-shadow ui-corner-all" >Tweet</button>
+   </div>
+ </div>
+
+
+ <div data-role="page" id="premio3">
+    <div data-role="header" data-theme="b"  >
+     <h1>Has Ganado!</h1>
+    
+   </div>
+   <div data-role="content" >
+    <div class='fondo2'>
+      <span class="luz" id="blink"><b>Rite de Acompañante</b></span>
+      <p>Codigo: YUY571UUIIU565</p>
+      <p>Nip: YUY571UUIIU565</p>
+      <button  onclick='returnHome()' class="ui-btn ui-btn-b btnA ui-btn-corner-all" >Volver</button>
+
+   </div>
+ </div>
+ </div>
+
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/facebook.js"></script>
+<script type="text/javascript" src="js/facebookConnectPlugin.js"></script>
+<script type="text/javascript" src="js/twitterApi.js"></script>
+<script type="text/javascript" src="js/maps.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="cordova_plugins.js"></script>
+
+</body>
+</html>
