@@ -18,7 +18,7 @@ Configuración:
                 2.-Instalar Xcode  version para ios 8
                 3.-Instalar  vesion de phone gap
                                 Guia  de Instalacion :  http://phonegap.com/install/
-                NOTA: Los  plugins  se instalan  unicamente   si se  crea un projecto nuevo  y quierens  anadir  ECORETOS a tu  nuevo proyecto.                                
+                NOTA: Los  plugins  se instalan  unicamente   si se  crea un proyecto nuevo  y se quiere  añadir  ecoReto a tu  nuevo proyecto.                                
                
 Configuración de desarrollo local: 
                 Agregar las variables de entorno   para que phonegap encuentre el SDK de android
@@ -29,4 +29,4 @@ Configuración de desarrollo local:
 
                 
 Despliegue:     
-
+                El sistema de gamificación esta diseñado para poder implementarse tanto en modo sandbox como en modo producción. De forma sandbox, se simulan eventos del servicio de recorridos de ecobici en los que se definen datos como tarjeta de usuario, id de bicicleta, cicloestacion, fecha y hora de origen y de fín del recorrido. Estos campos son los mismos que se encuentran en el sistema real de ecobici, por lo que unicamente es necesario redireciconar las conexiones hacia el sistema de ecobici para que el sistema consuma los datos reales.
